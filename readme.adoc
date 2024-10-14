@@ -1,0 +1,67 @@
+= Supply Chain Management Microservices
+
+Sample application of a supply chain management application using Spring Boot 
+microservices. This is for educational purposes and does not represent a real
+application as that would typically be far more complex in the real world.
+
+== Overview
+
+This application is a simple supply chain management application that allows
+users to manage products, suppliers, warehouse, inventory, orders, customers, 
+shipments, and payments. The application is implemented using Spring Boot
+microservices and demonstrates bounded contexts, domain-driven design, and 
+event-driven architecture.
+
+image::design/context-diagram.png[]
+
+== Modules
+
+The application is divided into the following modules:
+
+* `product-service`: Manages products and categories.
+* `supplier-service`: Manages suppliers.
+* `warehouse-service`: Manages warehouses and inventory.
+* `order-service`: Manages orders and customers.
+* `shipment-service`: Manages shipments.
+* `payment-service`: Manages payments.
+
+== Local Development Setup
+
+To build and run the application, you need to have Java 17, Docker, and Kubernetes 
+installed on your machine. I use minikube to run a single node kubernetes cluster. 
+Installing and using minikube is very simple and you can install it on Linux, Mac, 
+and Windows.
+
+https://minikube.sigs.k8s.io/docs/start
+
+=== Install PostgreSQL in Minikube
+
+In the `k8s` directory, you will find the Kubernetes manifests to deploy PostgreSQL.
+To deploy PostgreSQL in minikube, run the following command:
+
+[source,shell]
+----
+kubectl apply -f k8s/postgres-cm.yml
+kubectl apply -f k8s/postgres-secret.yml
+kubectl apply -f k8s/postgres-pvc.yml
+kubectl apply -f k8s/postgres-deployment.yml
+kubectl apply -f k8s/postgres-service.yml
+----
+
+You can check the status of the deployment using the following command:
+
+[source,shell]
+----
+kubectl get pods
+kubectl get svc
+----
+
+Your PostgreSQL database should be up and running. You can connect to the database
+using the following command:
+
+[source,shell]
+----
+kubectl run -it --rm --image=postgres:13.3 --restart=Never postgres-client -- psql -h postgres -U postgres
+----
+Every microservice is a Spring Boot application and can be started using the 
+`gradle bootRun` command. The services can be started in any order.

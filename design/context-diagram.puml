@@ -1,0 +1,18 @@
+@startuml
+!include <c4/C4_Context.puml>  
+
+!include <office/Users/user.puml>
+!include <office/Users/mobile_user.puml>
+
+title System Context Diagram for Supply Chain Management
+
+Person(customer, Customer, "<$user> <$mobile_user>\n Represents people or businesses purchasing products.")
+
+System(sms, "Supply Chain Management System", "Allows customers to order products and allows businesses to process orders, manage inventory and ship products.")
+
+System_Ext(notification_system, "Notification System", "Email and SMS Service")
+
+Rel(customer, sms, "Uses")
+Rel_Back(customer, notification_system, "Sends notification to")
+Rel_Neighbor(sms, notification_system, "Sends notification", "SMS/SMTP")
+@enduml
