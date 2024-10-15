@@ -29,6 +29,10 @@ The application is divided into the following modules:
 
 image::design/container-diagram.png[]
 
+=== Component Diagram
+
+image::design/component-diagram.png[]
+
 == Local Development Setup
 
 To build and run the application, you need to have Java 17, Docker, and Kubernetes 
