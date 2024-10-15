@@ -57,11 +57,37 @@ kubectl get svc
 ----
 
 Your PostgreSQL database should be up and running. You can connect to the database
-using the following command:
+by first getting the pod name and then open a bash shell in the postgres pod. Here's 
+how you do that:
 
 [source,shell]
 ----
-kubectl run -it --rm --image=postgres:13.3 --restart=Never postgres-client -- psql -h postgres -U postgres
+kubectl get pods --namespace default
 ----
-Every microservice is a Spring Boot application and can be started using the 
-`gradle bootRun` command. The services can be started in any order.
+
+You'll see something like this:
+
+[source,shell]
+----
+NAME                       READY   STATUS    RESTARTS   AGE
+postgres-5b6478f95-2b66r   1/1     Running   0          8m23s
+----
+
+Using the pod name you can now open a bash shell in the pod:
+
+[source,shell]
+----
+kubectl exec -it postgres-5b6478f95-2b66r -- bash
+----
+
+And now you can log into the database:
+
+[source,shell]
+----
+psql -d demo -U developer
+----
+
+You can also access the database from within your IDE using an extension 
+(highly recommended), or a separate database visualization tool that supports 
+PostgreSQL.
+
