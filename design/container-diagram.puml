@@ -1,0 +1,34 @@
+@startuml
+!include <c4/C4_Container.puml>  
+!include <office/Users/user.puml>
+!include <office/Users/mobile_user.puml>
+
+title Container diagram for Supply Chain Management
+
+Person(customer  , Customer , "<$user> <$mobile_user>\n A customer of supply chain management system" )
+
+System_Boundary(c1, "Supply Chain Management") {
+  Container(web_app, "Web Application", "React, Javascript, TailwindCSS", "Delivers the static content to the web browser")
+  Container(product_ms, "Product API", "Java, Docker Container", "API for managing product functionality")
+  Container(order_ms, "Order API", "Java, Docker Container", "API for managing order functionality")
+  Container(warehouse_ms, "Warehouse API", "Java, Docker Container", "API for managing warehouse functionality")
+  Container(supplier_ms, "Supplier API", "Java, Docker Container", "API for managing supplier functionality")
+  ContainerDb(product_db, "Product DB", "PostgreSQL Database", "Stores product information")
+  ContainerDb(order_db, "Order DB", "PostgreSQL Database", "Stores order information")
+  ContainerDb(warehouse_db, "Warehouse DB", "PostgreSQL Database", "Stores warehouse information")
+  ContainerDb(supplier_db, "Supplier DB", "PostgreSQL Database", "Stores supplier information")
+}
+
+Rel(order, web_app, "Uses", "HTTPS")
+Rel(web_app, product_ms, "Uses", "JSON/HTTPS")
+Rel(web_app, order_ms, "Uses", "JSON/HTTPS")
+Rel(web_app, warehouse_ms, "Uses", "JSON/HTTPS")
+Rel(web_app, supplier_ms, "Uses", "JSON/HTTPS")
+Rel(product_ms, product_db, "Uses", "Spring Data JPA")
+Rel(order_ms, order_db, "Uses", "Spring Data JPA")
+Rel(warehouse_ms, warehouse_db, "Uses", "Spring Data JPA")
+Rel(supplier_ms, supplier_db, "Uses", "Spring Data JPA")
+
+
+@enduml
+

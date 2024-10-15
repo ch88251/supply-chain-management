@@ -21,15 +21,13 @@ image::design/context-diagram.png[]
 The application is divided into the following modules:
 
 * `product-service`: Manages products and categories.
-* `supplier-service`: Manages suppliers.
 * `warehouse-service`: Manages warehouses and inventory.
+* `supplier-service`: Manages suppliers.
 * `order-service`: Manages orders and customers.
-* `shipment-service`: Manages shipments.
-* `payment-service`: Manages payments.
 
-=== Component Diagram
+=== Container Diagram
 
-image::design/component-diagram.png[]
+image::design/container-diagram.png[]
 
 == Local Development Setup
 
