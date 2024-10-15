@@ -1,28 +1,41 @@
 plugins {
-    application
+	java
+	id("org.springframework.boot") version "3.3.4"
+	id("io.spring.dependency-management") version "1.1.6"
+}
+
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom(configurations.annotationProcessor.get())
+	}
 }
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
 dependencies {
-    testImplementation(libs.junit.jupiter)
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    implementation(libs.guava)
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.flywaydb:flyway-core")
+	implementation("org.flywaydb:flyway-database-postgresql")
+	compileOnly("org.projectlombok:lombok")
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	runtimeOnly("org.postgresql:postgresql")
+	annotationProcessor("org.projectlombok:lombok")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
-
-application {
-    mainClass = "product.App"
-}
-
-tasks.named<Test>("test") {
-    // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
+tasks.withType<Test> {
+	useJUnitPlatform()
 }
