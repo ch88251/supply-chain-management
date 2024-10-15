@@ -29,7 +29,7 @@ The application is divided into the following modules:
 
 === Component Diagram
 
-image::design/context-diagram.png[]
+image::design/component-diagram.png[]
 
 == Local Development Setup
 
