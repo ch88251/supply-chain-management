@@ -12,6 +12,8 @@ shipments, and payments. The application is implemented using Spring Boot
 microservices and demonstrates bounded contexts, domain-driven design, and 
 event-driven architecture.
 
+=== Context Diagram
+
 image::design/context-diagram.png[]
 
 == Modules
@@ -24,6 +26,10 @@ The application is divided into the following modules:
 * `order-service`: Manages orders and customers.
 * `shipment-service`: Manages shipments.
 * `payment-service`: Manages payments.
+
+=== Component Diagram
+
+image::design/context-diagram.png[]
 
 == Local Development Setup
 

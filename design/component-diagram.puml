@@ -1,0 +1,38 @@
+@startuml
+!include <c4/C4_Container.puml>  
+!include <office/Users/user.puml>
+!include <office/Users/mobile_user.puml>
+
+title Container diagram for Supply Chain Management
+
+Person(customer  , Customer , "<$user> <$mobile_user>\n A customer of supply chain management system" )
+
+System_Boundary(c1, "Supply Chain Management") {
+  Container(web_app, "Web Application", "React, Javascript, TailwindCSS", "Delivers the static content to the web browser")
+  Container(product_ms, "Product API", "Java, Docker Container", "API for managing product functionality")
+  Container(customer_ms, "Customer API", "Java, Docker Container", "API for managing customer functionality")
+  Container(warehouse_ms, "Warehouse API", "Java, Docker Container", "API for managing warehouse functionality")
+  Container(inventory_ms, "Inventory API", "Java, Docker Container", "API for managing inventory functionality")
+  Container(supplier_ms, "Supplier API", "Java, Docker Container", "API for managing supplier functionality")
+  ContainerDb(product_db, "Product DB", "PostgreSQL Database", "Stores product information")
+  ContainerDb(customer_db, "Customer DB", "PostgreSQL Database", "Stores customer information")
+  ContainerDb(warehouse_db, "Warehouse DB", "PostgreSQL Database", "Stores warehouse information")
+  ContainerDb(inventory_db, "Inventory DB", "PostgreSQL Database", "Stores inventory information")
+  ContainerDb(supplier_db, "Supplier DB", "PostgreSQL Database", "Stores supplier information")
+}
+
+Rel(customer, web_app, "Uses", "HTTPS")
+Rel(web_app, product_ms, "Uses", "JSON/HTTPS")
+Rel(web_app, customer_ms, "Uses", "JSON/HTTPS")
+Rel(web_app, warehouse_ms, "Uses", "JSON/HTTPS")
+Rel(web_app, inventory_ms, "Uses", "JSON/HTTPS")
+Rel(web_app, supplier_ms, "Uses", "JSON/HTTPS")
+Rel(product_ms, product_db, "Uses", "Spring Data JPA")
+Rel(customer_ms, customer_db, "Uses", "Spring Data JPA")
+Rel(warehouse_ms, warehouse_db, "Uses", "Spring Data JPA")
+Rel(inventory_ms, inventory_db, "Uses", "Spring Data JPA")
+Rel(supplier_ms, supplier_db, "Uses", "Spring Data JPA")
+
+
+@enduml
+
