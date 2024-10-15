@@ -18,7 +18,7 @@ Container_Boundary(product_api, "Product API") {
 }
 
 Container_Boundary(order_api, "Order API") {
-  Component(customerController, "Order Controller", "Order Endpoints", "Provides REST endpoints for the client")
+  Component(orderController, "Order Controller", "Order Endpoints", "Provides REST endpoints for the client")
   Component(orderService, "Order Service", "Order business logic", "Provides the core business logic for managing orders")
   Component(orderRepository, "Order Repository", "Persistence layer for orders", "Provides CRUD operations for orders")
 }
