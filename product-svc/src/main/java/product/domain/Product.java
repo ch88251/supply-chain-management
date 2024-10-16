@@ -20,7 +20,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(callSuper = true)
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 public class Product extends AbstractEntity {
 
     @Nonnull
@@ -37,5 +37,5 @@ public class Product extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private ProductCategory category;
+    private Category category;
 }

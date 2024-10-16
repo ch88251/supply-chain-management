@@ -16,7 +16,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 @Entity
 @Table(name = "product_category")
-public class ProductCategory extends AbstractEntity {
+public class Category extends AbstractEntity {
 
     @Column(name = "name", nullable = false)
     private String name;
