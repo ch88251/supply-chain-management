@@ -1,0 +1,8 @@
+com/chayesdev/product/dto/CategoryDto.class
+com/chayesdev/product/service/CategoryService.class
+com/chayesdev/product/repository/CategoryRepository.class
+com/chayesdev/product/entity/Category.class
+com/chayesdev/product/MainApplication.class
+com/chayesdev/product/entity/Product.class
+com/chayesdev/product/entity/AuditEntity.class
+com/chayesdev/product/web/CategoryResource.class

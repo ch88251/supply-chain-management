@@ -1,0 +1,8 @@
+/home/chayes/projects/supply-chain-management/product-svc/src/main/java/com/chayesdev/product/MainApplication.java
+/home/chayes/projects/supply-chain-management/product-svc/src/main/java/com/chayesdev/product/dto/CategoryDto.java
+/home/chayes/projects/supply-chain-management/product-svc/src/main/java/com/chayesdev/product/entity/AuditEntity.java
+/home/chayes/projects/supply-chain-management/product-svc/src/main/java/com/chayesdev/product/entity/Category.java
+/home/chayes/projects/supply-chain-management/product-svc/src/main/java/com/chayesdev/product/entity/Product.java
+/home/chayes/projects/supply-chain-management/product-svc/src/main/java/com/chayesdev/product/repository/CategoryRepository.java
+/home/chayes/projects/supply-chain-management/product-svc/src/main/java/com/chayesdev/product/service/CategoryService.java
+/home/chayes/projects/supply-chain-management/product-svc/src/main/java/com/chayesdev/product/web/CategoryResource.java
